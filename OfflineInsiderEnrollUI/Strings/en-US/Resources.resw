@@ -74,7 +74,7 @@
     <value>Windows Insider Channel Enrollment</value>
   </data>
   <data name="SystemInfoBar.Title" xml:space="preserve">
-    <value>System Information</value>
+    <value>System Information:Windows</value>
   </data>
   <data name="CurrentStatusTitle.Text" xml:space="preserve">
     <value>Current Enrollment Status</value>
@@ -118,6 +118,26 @@
   <data name="OpenDiagnosticsButton.Content" xml:space="preserve">
     <value>Open Diagnostics &amp; Feedback Settings</value>
   </data>
+<data name="SystemInfoBar.Message" xml:space="preserve">
+  <value>Checking...</value>
+</data>
+
+<data name="CurrentStatusText.Text" xml:space="preserve">
+  <value>Not enrolled</value>
+</data>
+
+<data name="FlightSigningText.Text" xml:space="preserve">
+  <value>Flight Signing: Disabled</value>
+</data>
+
+<data name="ImportantNoticeContent.Text" xml:space="preserve">
+  <value>
+• Windows Insider Program requires Diagnostic Data set to "Full".
+• This tool only works on Windows 10 v1809 or later.
+• A restart may be required to enable Flight Signing.
+• This tool modifies the registry to enroll offline without a Microsoft account.
+  </value>
+</data>
 
   <!-- SettingsPage -->
   <data name="AppearanceGroup.Text" xml:space="preserve">
@@ -172,6 +192,25 @@
   <data name="Copyright_AllRightsReserved" xml:space="preserve">
     <value>All rights reserved.</value>
   </data>
+<data name="JoinLinks_Telegram.Text" xml:space="preserve">
+  <value>Telegram Group</value>
+</data>
+
+<data name="JoinLinks_Separator.Text" xml:space="preserve">
+  <value> | </value>
+</data>
+
+<data name="JoinLinks_QQ.Text" xml:space="preserve">
+  <value>QQ Group</value>
+</data>
+
+<data name="AboutDescription_Part1.Text" xml:space="preserve">
+  <value>This tool allows offline enrollment into Windows Insider channels without a Microsoft account.</value>
+</data>
+
+<data name="AboutDescription_Part2.Text" xml:space="preserve">
+  <value>It modifies system registry entries to configure Insider settings.</value>
+</data>
 
   <!-- ConfirmEnrollDialog -->
   <data name="ConfirmEnrollDialog.Title" xml:space="preserve">

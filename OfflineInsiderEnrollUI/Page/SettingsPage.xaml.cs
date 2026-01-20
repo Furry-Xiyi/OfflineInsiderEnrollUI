@@ -1,8 +1,10 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Documents;
 using Microsoft.WindowsAppSDK.Runtime;
 using System;
 using System.Globalization;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Resources;
 
@@ -10,6 +12,21 @@ namespace OfflineInsiderEnrollUI
 {
     public sealed partial class SettingsPage : Page
     {
+        private async Task OpenExternalLinkAsync(string url)
+        {
+            var dialog = new FeedbackDialog
+            {
+                XamlRoot = MainWindow.Instance.Content.XamlRoot
+            };
+
+            var result = await dialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                await Windows.System.Launcher.LaunchUriAsync(new Uri(url));
+            }
+        }
+
         private bool _isInitializing = true;
         public SettingsPage()
         {
@@ -118,19 +135,19 @@ namespace OfflineInsiderEnrollUI
 
         private async void SendFeedback_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new FeedbackDialog
-            {
-                XamlRoot = MainWindow.Instance.Content.XamlRoot
-            };
-
-            var result = await dialog.ShowAsync();
-
-            if (result == ContentDialogResult.Primary)
-            {
-                await Windows.System.Launcher.LaunchUriAsync(
-                    new Uri("https://github.com/Furry-Xiyi/OfflineInsiderEnrollUI")
-                );
-            }
+            await OpenExternalLinkAsync("https://github.com/Furry-Xiyi/OfflineInsiderEnrollUI");
+        }
+        private async void JoinQQ_Click(Hyperlink sender, HyperlinkClickEventArgs args)
+        {
+            await OpenExternalLinkAsync("https://qm.qq.com/q/dh2KHPYM9y");
+        }
+        private async void JoinTelegram_Click(Hyperlink sender, HyperlinkClickEventArgs args)
+        {
+            await OpenExternalLinkAsync("https://t.me/Clash_WinUI");
+        }
+        private async void OpenOfflineInsiderEnroll_Click(Hyperlink sender, HyperlinkClickEventArgs args)
+        {
+            await OpenExternalLinkAsync("https://github.com/abbodi1406/offlineinsiderenroll");
         }
     }
 }

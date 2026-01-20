@@ -22,45 +22,39 @@ namespace OfflineInsiderEnrollUI
         private DesktopAcrylicController m_acrylicController;
         private SystemBackdropConfiguration m_configurationSource;
 
-        [DllImport("user32.dll")]
-        private static extern uint GetDpiForWindow(IntPtr hwnd);
         public static MainWindow Instance { get; private set; }
-        private IntPtr m_windowHandle;
+        private IntPtr _hwnd;
+        private IntPtr _oldWndProc;
+        private WndProcDelegate _newWndProc;
+
         public MainWindow()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             Instance = this;
-            // 初始化窗口
-            InitializeWindow();
 
-            // 初始化背景和主题（在显示前）
+            InitializeWindow();
+            HookMinWindowSize();
             InitializeAppearance();
-            // 注册关闭事件
+            this.Activated += MainWindow_Activated;
+
             this.Closed += MainWindow_Closed;
-            // 导航到首页
+
             ContentFrame.Navigate(typeof(HomePage));
             NavView.SelectedItem = HomeItem;
         }
 
         private void InitializeWindow()
         {
-            // 获取窗口句柄和 AppWindow
-            IntPtr hWnd = WindowNative.GetWindowHandle(this);
-            WindowId windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            _hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(_hwnd);
             m_appWindow = AppWindow.GetFromWindowId(windowId);
 
-            // 设置窗口标题和图标
             m_appWindow.Title = "Offline Insider Enroll";
             m_appWindow.SetIcon("Assets/AppIcon.ico");
+            m_appWindow.Resize(new SizeInt32(620, 1020));
 
-            // 设置窗口大小
-            m_appWindow.Resize(new SizeInt32(1000, 700));
-
-            // 自定义标题栏
-            ExtendsContentIntoTitleBar = true;
             SetTitleBar(AppTitleBar);
 
-            // 配置标题栏颜色
             if (AppWindowTitleBar.IsCustomizationSupported())
             {
                 var titleBar = m_appWindow.TitleBar;
@@ -69,6 +63,65 @@ namespace OfflineInsiderEnrollUI
                 titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
             }
         }
+
+        private void HookMinWindowSize()
+        {
+            _newWndProc = CustomWndProc;
+            _oldWndProc = SetWindowLongPtr(_hwnd, -4,
+                Marshal.GetFunctionPointerForDelegate(_newWndProc));
+        }
+
+        private IntPtr CustomWndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
+        {
+            const int WM_GETMINMAXINFO = 0x0024;
+
+            if (msg == WM_GETMINMAXINFO)
+            {
+                var mmi = Marshal.PtrToStructure<MINMAXINFO>(lParam);
+
+                mmi.ptMinTrackSize.x = 620;
+                mmi.ptMinTrackSize.y = 800;
+
+                Marshal.StructureToPtr(mmi, lParam, fDeleteOld: false);
+                return IntPtr.Zero;
+            }
+
+            return CallWindowProc(_oldWndProc, hWnd, msg, wParam, lParam);
+        }
+
+        private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
+        {
+            if (m_configurationSource != null)
+            {
+                m_configurationSource.IsInputActive =
+                    args.WindowActivationState != WindowActivationState.Deactivated;
+            }
+        }
+
+        private delegate IntPtr WndProcDelegate(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+
+        [DllImport("user32.dll")]
+        private static extern uint GetDpiForWindow(IntPtr hwnd);
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr newProc);
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr CallWindowProc(IntPtr lpPrevWndFunc, IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+
+        [StructLayout(LayoutKind.Sequential)]
+        private struct POINT { public int x; public int y; }
+
+        [StructLayout(LayoutKind.Sequential)]
+        private struct MINMAXINFO
+        {
+            public POINT ptReserved;
+            public POINT ptMaxSize;
+            public POINT ptMaxPosition;
+            public POINT ptMinTrackSize;
+            public POINT ptMaxTrackSize;
+        }
+
         private void MainWindow_Closed(object sender, WindowEventArgs args)
         {
             // 清理所有资源，防止 Win32 异常
@@ -271,23 +324,24 @@ namespace OfflineInsiderEnrollUI
             SplashOverlay.Visibility = Visibility.Visible;
             SplashOverlay.Opacity = 1;
 
-            var hwnd = WindowNative.GetWindowHandle(this);
+            // 让 Overlay 全屏覆盖
+            SplashOverlay.HorizontalAlignment = HorizontalAlignment.Stretch;
+            SplashOverlay.VerticalAlignment = VerticalAlignment.Stretch;
+
+            // 使用应用背景色（与你另一个应用一致）
+            SplashOverlay.Background = (Brush)Application.Current.Resources["ApplicationPageBackgroundThemeBrush"];
+
+            // DPI 选择 scale 资源
+            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
             uint dpi = GetDpiForWindow(hwnd);
             string scaleSuffix = dpi >= 288 ? "400" : dpi >= 192 ? "200" : "100";
             string imagePath = $"Assets/SplashScreen.scale-{scaleSuffix}.png";
 
-            try
-            {
-                SplashImage.Source = new BitmapImage(new Uri($"ms-appx:///{imagePath}"));
-            }
-            catch
-            {
-                try
-                {
-                    SplashImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SplashScreen.png"));
-                }
-                catch { }
-            }
+            // Splash 图片拉伸方式（与你另一个应用一致）
+            SplashImage.Stretch = Stretch.Uniform;
+
+            // 直接加载 ms-appx 资源（不再使用 try/catch）
+            SplashImage.Source = new BitmapImage(new Uri($"ms-appx:///{imagePath}"));
         }
 
         public void HideSplashOverlay()

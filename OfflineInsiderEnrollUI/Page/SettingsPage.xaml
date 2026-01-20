@@ -147,8 +147,8 @@
                           FontWeight="SemiBold" 
                           Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
 
-                    <muxc:Expander x:Name="AboutExpander" 
-                              IsExpanded="False" 
+                    <muxc:Expander x:Name="AboutExpander"
+                              IsExpanded="True" 
                               HorizontalAlignment="Stretch" 
                               HorizontalContentAlignment="Left" 
                               MinHeight="100">
@@ -187,20 +187,24 @@
                                       TextWrapping="Wrap" 
                                       Foreground="{ThemeResource TextFillColorPrimaryBrush}">
                                 <Run Text="基于 "/>
-                                <Hyperlink NavigateUri="https://github.com/abbodi1406/offlineinsiderenroll">
-                                    <Run Text="OfflineInsiderEnroll"/>
-                                </Hyperlink>
+                                <Hyperlink Click="OpenOfflineInsiderEnroll_Click">
+    <Run Text="OfflineInsiderEnroll"/>
+</Hyperlink>
                                 <Run Text=" 脚本开发的图形界面版本。"/>
                                 </TextBlock>
-                                <TextBlock TextWrapping="Wrap"
+                                <TextBlock x:Uid="JoinLinks"
+ TextWrapping="Wrap"
                    Foreground="{ThemeResource TextFillColorPrimaryBrush}">
-            <Hyperlink NavigateUri="https://qm.qq.com/q/dh2KHPYM9y">
-                <Run Text="加入QQ群"/>
-            </Hyperlink>
-            <Run Text="  |  "/>
-            <Hyperlink NavigateUri="https://t.me/Clash_WinUI">
-                <Run Text="加入Telegram"/>
-            </Hyperlink>
+            <Hyperlink Click="JoinQQ_Click">
+        <Run x:Uid="JoinLinks_QQ"/>
+    </Hyperlink>
+
+    <Run x:Uid="JoinLinks_Separator"/>
+
+    <Hyperlink Click="JoinTelegram_Click">
+        <Run x:Uid="JoinLinks_Telegram"/>
+    </Hyperlink>
+
                                 </TextBlock>
                             </StackPanel>
                         </muxc:Expander.Content>
@@ -213,7 +217,6 @@
                            HorizontalAlignment="Left">
                     <TextBlock x:Uid="FeedbackButton" 
                           x:Name="FeedbackButtonText"
-                          Text="发送反馈" 
                           TextWrapping="Wrap" />
                 </HyperlinkButton>
 

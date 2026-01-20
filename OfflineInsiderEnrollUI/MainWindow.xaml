@@ -60,17 +60,25 @@
             
         </muxc:NavigationView>
 
-        <!-- 启动画面覆盖层 -->
+        <!-- 假 Splash 覆盖层（UWP 风格） -->
         <Grid x:Name="SplashOverlay"
-              Grid.RowSpan="2"
-              Visibility="Collapsed"
-              Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <Image x:Name="SplashImage"
-                   Width="320" Height="320"
-                   Stretch="Uniform"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
-            
+      Grid.RowSpan="2"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      Visibility="Collapsed"
+      Opacity="0"
+      IsHitTestVisible="False">
+
+            <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="12">
+
+                <!-- 这里只定义 Image，不写 Source -->
+                <Image x:Name="SplashImage"
+               Width="220"
+               Height="220"
+               Stretch="UniformToFill"/>
+            </StackPanel>
+
         </Grid>
         <!-- ⭐ 全屏遮罩层（必须放在 RootGrid 的最后） -->
         <Grid x:Name="OverlayPanel"

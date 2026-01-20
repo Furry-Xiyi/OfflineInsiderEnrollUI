@@ -74,7 +74,7 @@
     <value>Windows Insider 频道注册</value>
   </data>
   <data name="SystemInfoBar.Title" xml:space="preserve">
-    <value>系统信息</value>
+    <value>系统版本:Windows</value>
   </data>
   <data name="CurrentStatusTitle.Text" xml:space="preserve">
     <value>当前注册状态</value>
@@ -118,6 +118,27 @@
   <data name="OpenDiagnosticsButton.Content" xml:space="preserve">
     <value>打开诊断和反馈设置</value>
   </data>
+  <data name="SystemInfoBar.Message" xml:space="preserve">
+  <value>正在检测...</value>
+</data>
+
+<data name="CurrentStatusText.Text" xml:space="preserve">
+  <value>未注册</value>
+</data>
+
+<data name="FlightSigningText.Text" xml:space="preserve">
+  <value>Flight Signing：未启用</value>
+</data>
+
+<data name="ImportantNoticeContent.Text" xml:space="preserve">
+  <value>
+• Windows Insider 计划需要将诊断数据设置为“完整”。
+• 此工具仅适用于 Windows 10 v1809 及更高版本。
+• 首次注册可能需要重启以启用 Flight Signing。
+• 该工具通过修改注册表来实现离线注册，无需 Microsoft 账户。
+  </value>
+</data>
+
 
   <!-- SettingsPage -->
   <data name="AppearanceGroup.Text" xml:space="preserve">
@@ -165,9 +186,29 @@
   <data name="GitHubButton.Content" xml:space="preserve">
     <value>访问 GitHub 项目</value>
   </data>
-  <data name="FeedbackButton.Text" xml:space="preserve">
-    <value>发送反馈</value>
-  </data>
+  <data name="AboutDescription_Part1.Text" xml:space="preserve">
+  <value>基于 </value>
+</data>
+
+<data name="AboutDescription_Part2.Text" xml:space="preserve">
+  <value> 脚本开发的图形界面版本。</value>
+</data>
+
+<data name="JoinLinks_QQ.Text" xml:space="preserve">
+  <value>加入QQ群</value>
+</data>
+
+<data name="JoinLinks_Separator.Text" xml:space="preserve">
+  <value>  |  </value>
+</data>
+
+<data name="JoinLinks_Telegram.Text" xml:space="preserve">
+  <value>加入Telegram</value>
+</data>
+
+<data name="FeedbackButton.Text" xml:space="preserve">
+  <value>发送反馈</value>
+</data>
 <data name="Copyright_AllRightsReserved" xml:space="preserve">
   <value>保留所有权利。</value>
 </data>
