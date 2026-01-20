@@ -1,0 +1,14 @@
+<ContentDialog
+    x:Class="OfflineInsiderEnrollUI.FeedbackDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Uid="FeedbackDialog"
+    PrimaryButtonText=""
+    CloseButtonText=""
+    DefaultButton="Primary"
+    Style="{StaticResource DefaultContentDialogStyle}">
+
+    <TextBlock
+        x:Uid="FeedbackDialog_Content"
+        TextWrapping="Wrap"/>
+</ContentDialog>

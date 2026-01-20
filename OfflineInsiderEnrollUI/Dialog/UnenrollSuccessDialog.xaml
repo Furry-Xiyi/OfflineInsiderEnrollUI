@@ -1,0 +1,14 @@
+<ContentDialog
+    x:Class="OfflineInsiderEnrollUI.Dialogs.UnenrollSuccessDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Uid="UnenrollSuccessDialog"
+    CloseButtonText=""
+    DefaultButton="Primary"
+    Style="{StaticResource DefaultContentDialogStyle}">
+
+    <TextBlock
+        x:Name="ContentText"
+        TextWrapping="Wrap"
+        MaxWidth="400"/>
+</ContentDialog>

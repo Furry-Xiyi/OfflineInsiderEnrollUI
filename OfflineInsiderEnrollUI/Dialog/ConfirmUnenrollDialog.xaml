@@ -1,0 +1,15 @@
+<ContentDialog
+    x:Class="OfflineInsiderEnrollUI.Dialogs.ConfirmUnenrollDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Uid="ConfirmUnenrollDialog"
+    PrimaryButtonText=""
+    CloseButtonText=""
+    DefaultButton="Primary"
+    Style="{StaticResource DefaultContentDialogStyle}">
+
+    <TextBlock
+        x:Uid="ConfirmUnenrollDialog_Content"
+        TextWrapping="Wrap"
+        MaxWidth="400"/>
+</ContentDialog>

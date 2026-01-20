@@ -1,0 +1,27 @@
+<ContentDialog
+    x:Class="OfflineInsiderEnrollUI.Dialogs.EnrollSuccessDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Uid="EnrollSuccessDialog"
+    CloseButtonText=""
+    DefaultButton="Primary"
+    Style="{StaticResource DefaultContentDialogStyle}">
+
+    <StackPanel Spacing="8">
+
+        <!-- 需要重启 -->
+        <TextBlock
+            x:Uid="EnrollSuccessDialog_NeedReboot"
+            x:Name="NeedRebootText"
+            TextWrapping="Wrap"
+            MaxWidth="400"/>
+
+        <!-- 不需要重启 -->
+        <TextBlock
+            x:Uid="EnrollSuccessDialog_NoReboot"
+            x:Name="NoRebootText"
+            TextWrapping="Wrap"
+            MaxWidth="400"/>
+
+    </StackPanel>
+</ContentDialog>
