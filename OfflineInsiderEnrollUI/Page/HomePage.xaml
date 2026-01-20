@@ -1,0 +1,166 @@
+<Page
+    x:Class="OfflineInsiderEnrollUI.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
+
+    <ScrollViewer>
+        <Grid Padding="40,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Padding="40,20" Spacing="20" HorizontalAlignment="Stretch">
+
+            <!-- 标题 -->
+            <TextBlock x:Uid="PageTitle" 
+                      x:Name="PageTitleText"
+                      Text="Windows Insider 频道注册" 
+                      FontSize="32" 
+                      FontWeight="Bold" 
+                      Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+
+            <!-- 系统信息卡片 -->
+            <muxc:InfoBar x:Name="SystemInfoBar"
+                         x:Uid="SystemInfoBar"
+                         IsOpen="True"
+                         IsClosable="False"
+                         Severity="Informational"
+                         Title="系统信息"
+                         Message="正在检测..."/>
+
+            <!-- 当前状态卡片 -->
+            <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                   BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                   BorderThickness="1"
+                   CornerRadius="8"
+                   Padding="20">
+                <StackPanel Spacing="12">
+                    <TextBlock x:Uid="CurrentStatusTitle" 
+                              x:Name="CurrentStatusTitleText"
+                              Text="当前注册状态" 
+                              FontSize="20" 
+                              FontWeight="SemiBold"
+                              Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <FontIcon Glyph="&#xECA7;" FontSize="16"/>
+                        <TextBlock x:Name="CurrentStatusText" 
+                                  Text="未注册" 
+                                  FontSize="16"
+                                  Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+                    </StackPanel>
+
+                    <TextBlock x:Name="FlightSigningText" 
+                              Text="Flight Signing: 未启用" 
+                              FontSize="14" 
+                              Opacity="0.7"
+                              Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 频道选择 -->
+            <TextBlock x:Uid="ChannelSelectionTitle" 
+                      x:Name="ChannelSelectionTitleText"
+                      Text="选择 Insider 频道" 
+                      FontSize="20" 
+                      FontWeight="SemiBold"
+                      Margin="0,10,0,0"
+                      Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+
+            <muxc:RadioButtons x:Name="ChannelSelection" SelectionChanged="ChannelSelection_Changed">
+                <RadioButton x:Uid="ChannelCanary" Content="Canary Channel (金丝雀频道)" Tag="0"/>
+                <RadioButton x:Uid="ChannelDev" Content="Dev Channel (开发频道)" Tag="1"/>
+                <RadioButton x:Uid="ChannelBeta" Content="Beta Channel (Beta 频道)" Tag="2"/>
+                <RadioButton x:Uid="ChannelRP" Content="Release Preview Channel (发布预览频道)" Tag="3"/>
+            </muxc:RadioButtons>
+
+            <!-- 操作按钮 -->
+            <StackPanel Spacing="12" Margin="0,20,0,0">
+                <Button x:Name="EnrollButton" 
+                       x:Uid="EnrollButton"
+                       Content="注册到选定频道" 
+                       Style="{StaticResource AccentButtonStyle}"
+                       Click="EnrollButton_Click"
+                       IsEnabled="False"
+                       HorizontalAlignment="Stretch"/>
+
+                <Button x:Name="UnenrollButton" 
+                       x:Uid="UnenrollButton"
+                       Content="停止接收 Insider 预览版" 
+                       Click="UnenrollButton_Click"
+                       HorizontalAlignment="Stretch"/>
+
+                <Button x:Name="RefreshButton" 
+                       x:Uid="RefreshButton"
+                       Content="刷新状态" 
+                       Click="RefreshButton_Click"
+                       HorizontalAlignment="Stretch"/>
+            </StackPanel>
+
+            <!-- 重启提示 -->
+            <muxc:InfoBar x:Name="RebootInfoBar"
+                         x:Uid="RebootInfoBar"
+                         IsOpen="False"
+                         Severity="Warning"
+                         Title="需要重启"
+                         Message="更改已应用,需要重启计算机才能生效。">
+                <muxc:InfoBar.ActionButton>
+                    <Button x:Uid="RebootButton" Content="立即重启" Click="RebootButton_Click"/>
+                </muxc:InfoBar.ActionButton>
+            </muxc:InfoBar>
+
+            <!-- 注意事项 -->
+            <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                   BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                   BorderThickness="1"
+                   CornerRadius="8"
+                   Padding="20"
+                   Margin="0,20,0,0">
+                <StackPanel Spacing="12">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <FontIcon Glyph="&#xE7BA;" FontSize="20" Foreground="#F7630C"/>
+                        <TextBlock x:Uid="ImportantNoticeTitle" 
+                                  x:Name="ImportantNoticeTitleText"
+                                  Text="重要提示" 
+                                  FontSize="18" 
+                                  FontWeight="SemiBold"
+                                  Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+                    </StackPanel>
+
+                    <TextBlock x:Uid="ImportantNoticeContent" 
+                              x:Name="ImportantNoticeContentText"
+                              TextWrapping="Wrap" 
+                              Foreground="{ThemeResource TextFillColorPrimaryBrush}">
+                        <Run Text="• Windows Insider 计划需要将诊断数据设置为"/>
+                        <Run Text="完整" FontWeight="Bold"/>
+                        <Run Text="。"/>
+                        <LineBreak/>
+                        <Run Text="• 此工具仅适用于 Windows 10 v1809 及更高版本。"/>
+                        <LineBreak/>
+                        <Run Text="• 首次注册可能需要重启以启用 Flight Signing。"/>
+                        <LineBreak/>
+                        <Run Text="• 该工具通过修改注册表来实现离线注册,无需 Microsoft 账户。"/>
+                    </TextBlock>
+
+                        <HyperlinkButton x:Uid="OpenDiagnosticsButton"
+                 x:Name="OpenDiagnosticsButtonText"
+                 Content="打开诊断和反馈设置"
+                 Click="OpenDiagnosticsButton_Click"
+                 Margin="0,10,0,0"/>
+                    </StackPanel>
+            </Border>
+
+            <!-- 进度显示 -->
+            <StackPanel x:Name="ProgressPanel" Visibility="Collapsed" Spacing="12">
+                <ProgressRing IsActive="True" Width="40" Height="40"/>
+                <TextBlock x:Name="ProgressText" 
+                          Text="正在处理..." 
+                          HorizontalAlignment="Center"
+                          Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+            </StackPanel>
+
+        </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

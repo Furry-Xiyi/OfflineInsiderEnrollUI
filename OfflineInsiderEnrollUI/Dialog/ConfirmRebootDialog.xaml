@@ -1,0 +1,15 @@
+<ContentDialog
+    x:Class="OfflineInsiderEnrollUI.Dialogs.ConfirmRebootDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Uid="ConfirmRebootDialog"
+    PrimaryButtonText=""
+    CloseButtonText=""
+    DefaultButton="Primary"
+    Style="{StaticResource DefaultContentDialogStyle}">
+
+    <TextBlock
+        x:Uid="ConfirmRebootDialog_Content"
+        TextWrapping="Wrap"
+        MaxWidth="400"/>
+</ContentDialog>

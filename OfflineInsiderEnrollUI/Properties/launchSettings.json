@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "OfflineInsiderEnrollUI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "OfflineInsiderEnrollUI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

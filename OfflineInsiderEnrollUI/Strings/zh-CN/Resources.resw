@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" msdata:Ordinal="5" />
+            </xsd:complexType>
+          </xsd:element>
+
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- MainWindow -->
+  <data name="NavHome.Content" xml:space="preserve">
+    <value>主页</value>
+  </data>
+
+  <!-- HomePage -->
+  <data name="PageTitle.Text" xml:space="preserve">
+    <value>Windows Insider 频道注册</value>
+  </data>
+  <data name="SystemInfoBar.Title" xml:space="preserve">
+    <value>系统信息</value>
+  </data>
+  <data name="CurrentStatusTitle.Text" xml:space="preserve">
+    <value>当前注册状态</value>
+  </data>
+  <data name="ChannelSelectionTitle.Text" xml:space="preserve">
+    <value>选择 Insider 频道</value>
+  </data>
+  <data name="ChannelCanary.Content" xml:space="preserve">
+    <value>Canary Channel (金丝雀频道)</value>
+  </data>
+  <data name="ChannelDev.Content" xml:space="preserve">
+    <value>Dev Channel (开发频道)</value>
+  </data>
+  <data name="ChannelBeta.Content" xml:space="preserve">
+    <value>Beta Channel (Beta 频道)</value>
+  </data>
+  <data name="ChannelRP.Content" xml:space="preserve">
+    <value>Release Preview Channel (发布预览频道)</value>
+  </data>
+  <data name="EnrollButton.Content" xml:space="preserve">
+    <value>注册到选定频道</value>
+  </data>
+  <data name="UnenrollButton.Content" xml:space="preserve">
+    <value>停止接收 Insider 预览版</value>
+  </data>
+  <data name="RefreshButton.Content" xml:space="preserve">
+    <value>刷新状态</value>
+  </data>
+  <data name="RebootInfoBar.Title" xml:space="preserve">
+    <value>需要重启</value>
+  </data>
+  <data name="RebootInfoBar.Message" xml:space="preserve">
+    <value>更改已应用,需要重启计算机才能生效。</value>
+  </data>
+  <data name="RebootButton.Content" xml:space="preserve">
+    <value>立即重启</value>
+  </data>
+  <data name="ImportantNoticeTitle.Text" xml:space="preserve">
+    <value>重要提示</value>
+  </data>
+  <data name="OpenDiagnosticsButton.Content" xml:space="preserve">
+    <value>打开诊断和反馈设置</value>
+  </data>
+
+  <!-- SettingsPage -->
+  <data name="AppearanceGroup.Text" xml:space="preserve">
+    <value>外观与材质</value>
+  </data>
+  <data name="ThemeHeader.Title.Text" xml:space="preserve">
+    <value>应用主题</value>
+  </data>
+  <data name="ThemeHeader.Subtitle.Text" xml:space="preserve">
+    <value>选择应用的颜色主题</value>
+  </data>
+  <data name="ThemeSystem.Text" xml:space="preserve">
+    <value>使用系统设置</value>
+  </data>
+  <data name="ThemeLight.Text" xml:space="preserve">
+    <value>浅色</value>
+  </data>
+  <data name="ThemeDark.Text" xml:space="preserve">
+    <value>深色</value>
+  </data>
+  <data name="MaterialHeader.Title.Text" xml:space="preserve">
+    <value>背景材质</value>
+  </data>
+  <data name="MaterialHeader.Subtitle.Text" xml:space="preserve">
+    <value>选择窗口背景材质效果</value>
+  </data>
+  <data name="MaterialAcrylic.Text" xml:space="preserve">
+    <value>亚克力 (Acrylic)</value>
+  </data>
+  <data name="MaterialMica.Text" xml:space="preserve">
+    <value>云母 (Mica)</value>
+  </data>
+  <data name="MaterialMicaAlt.Text" xml:space="preserve">
+    <value>云母 Alt (Mica Alt)</value>
+  </data>
+  <data name="AboutTitle.Text" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="AppTitle.Text" xml:space="preserve">
+    <value>Offline Insider Enroll UI</value>
+  </data>
+  <data name="AppPublisher.Text" xml:space="preserve">
+    <value>WinUI 3 图形界面版本</value>
+  </data>
+  <data name="GitHubButton.Content" xml:space="preserve">
+    <value>访问 GitHub 项目</value>
+  </data>
+  <data name="FeedbackButton.Text" xml:space="preserve">
+    <value>发送反馈</value>
+  </data>
+
+<!-- ========================= -->
+<!--  ConfirmEnrollDialog      -->
+<!-- ========================= -->
+<data name="ConfirmEnrollDialog.Title" xml:space="preserve">
+  <value>确认注册</value>
+</data>
+
+<data name="ConfirmEnrollDialog.Content" xml:space="preserve">
+  <value>确定要注册到 {0} 吗？&#x0a;&#x0a;这将修改系统注册表并可能需要重启。</value>
+</data>
+
+<data name="ConfirmEnrollDialog.PrimaryButtonText" xml:space="preserve">
+  <value>确定</value>
+</data>
+
+<data name="ConfirmEnrollDialog.CloseButtonText" xml:space="preserve">
+  <value>取消</value>
+</data>
+
+
+<!-- ========================= -->
+<!--  EnrollSuccessDialog      -->
+<!-- ========================= -->
+<data name="EnrollSuccessDialog.Title" xml:space="preserve">
+  <value>注册成功</value>
+</data>
+
+<data name="EnrollSuccessDialog.Content.NoReboot" xml:space="preserve">
+  <value>已成功注册！请在 Windows 更新中检查预览版更新。</value>
+</data>
+
+<data name="EnrollSuccessDialog.Content.NeedReboot" xml:space="preserve">
+  <value>已成功注册！需要重启计算机以完成设置。</value>
+</data>
+
+<data name="EnrollSuccessDialog.CloseButtonText" xml:space="preserve">
+  <value>确定</value>
+</data>
+
+
+<!-- ========================= -->
+<!--  ErrorDialog              -->
+<!-- ========================= -->
+<data name="ErrorDialog.Title" xml:space="preserve">
+  <value>发生错误</value>
+</data>
+
+<data name="ErrorDialog.Content" xml:space="preserve">
+  <value>{0}</value>
+</data>
+
+<data name="ErrorDialog.CloseButtonText" xml:space="preserve">
+  <value>确定</value>
+</data>
+
+
+<!-- ========================= -->
+<!--  ConfirmUnenrollDialog    -->
+<!-- ========================= -->
+<data name="ConfirmUnenrollDialog.Title" xml:space="preserve">
+  <value>确认停止</value>
+</data>
+
+<data name="ConfirmUnenrollDialog.Content" xml:space="preserve">
+  <value>确定要停止接收 Insider 预览版更新吗？&#x0a;&#x0a;这将恢复到正常的 Windows 更新。</value>
+</data>
+
+<data name="ConfirmUnenrollDialog.PrimaryButtonText" xml:space="preserve">
+  <value>确定</value>
+</data>
+
+<data name="ConfirmUnenrollDialog.CloseButtonText" xml:space="preserve">
+  <value>取消</value>
+</data>
+
+
+<!-- ========================= -->
+<!--  UnenrollSuccessDialog    -->
+<!-- ========================= -->
+<data name="UnenrollSuccessDialog.Title">
+  <value>操作成功</value>
+</data>
+
+<data name="UnenrollSuccessDialog.CloseButtonText">
+  <value>确定</value>
+</data>
+
+<!-- ========================= -->
+<!--  ConfirmRebootDialog      -->
+<!-- ========================= -->
+<data name="ConfirmRebootDialog.Title" xml:space="preserve">
+  <value>确认重启</value>
+</data>
+
+<data name="ConfirmRebootDialog.Content" xml:space="preserve">
+  <value>确定要立即重启计算机吗？请先保存所有工作。</value>
+</data>
+
+<data name="ConfirmRebootDialog.PrimaryButtonText" xml:space="preserve">
+  <value>立即重启</value>
+</data>
+
+<data name="ConfirmRebootDialog.CloseButtonText" xml:space="preserve">
+  <value>取消</value>
+</data>
+
+
+<!-- ========================= -->
+<!--  FeedbackDialog           -->
+<!-- ========================= -->
+<data name="FeedbackDialog.Title" xml:space="preserve">
+  <value>打开外部链接</value>
+</data>
+
+<data name="FeedbackDialog_Content.Text" xml:space="preserve">
+  <value>应用即将打开外部应用，是否继续？</value>
+</data>
+
+<data name="FeedbackDialog.PrimaryButtonText" xml:space="preserve">
+  <value>继续</value>
+</data>
+
+<data name="FeedbackDialog.CloseButtonText" xml:space="preserve">
+  <value>取消</value>
+</data>
+</root>
