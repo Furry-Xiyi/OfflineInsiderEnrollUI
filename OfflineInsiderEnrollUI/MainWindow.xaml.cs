@@ -32,36 +32,59 @@ namespace OfflineInsiderEnrollUI
             InitializeComponent();
             Instance = this;
 
-            InitializeWindow();
-            HookMinWindowSize();
-            InitializeAppearance();
-            this.Activated += MainWindow_Activated;
+            InitializeAppWindow();      // 合并窗口初始化
+            InitializeAppearance();     // Mica / Acrylic
+            HookMinWindowSize();        // 最小窗口尺寸
 
-            this.Closed += MainWindow_Closed;
+            ExtendsContentIntoTitleBar = true;
+            SetTitleBar(AppTitleBar);
+
+            Activated += MainWindow_Activated;
+            Closed += MainWindow_Closed;
 
             ContentFrame.Navigate(typeof(HomePage));
             NavView.SelectedItem = HomeItem;
         }
-
-        private void InitializeWindow()
+        private void InitializeAppWindow()
         {
-            _hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-            var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(_hwnd);
+            _hwnd = WindowNative.GetWindowHandle(this);
+            var windowId = Win32Interop.GetWindowIdFromWindow(_hwnd);
             m_appWindow = AppWindow.GetFromWindowId(windowId);
 
-            m_appWindow.Title = "Offline Insider Enroll";
+            // 本地化标题
+            var rm = new Microsoft.Windows.ApplicationModel.Resources.ResourceManager();
+            m_appWindow.Title = rm.MainResourceMap.GetValue("Resources/AppTitle/Text").ValueAsString;
+
+            // 图标
             m_appWindow.SetIcon("Assets/AppIcon.ico");
-            m_appWindow.Resize(new SizeInt32(620, 1020));
 
-            SetTitleBar(AppTitleBar);
+            // 初始大小
+            m_appWindow.Resize(new SizeInt32(580, 945));
 
+            // 自定义标题栏按钮
             if (AppWindowTitleBar.IsCustomizationSupported())
             {
                 var titleBar = m_appWindow.TitleBar;
                 titleBar.ExtendsContentIntoTitleBar = true;
+
                 titleBar.ButtonBackgroundColor = Colors.Transparent;
                 titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+
+                // 失焦时按钮灰化（官方行为）
+                titleBar.ButtonForegroundColor = Colors.Black;
+                titleBar.ButtonInactiveForegroundColor = Color.FromArgb(255, 120, 120, 120);
             }
+        }
+        private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
+        {
+            bool isActive = args.WindowActivationState != WindowActivationState.Deactivated;
+
+            // 你的标题栏文本控件
+            AppTitle.Opacity = isActive ? 1.0 : 0.6;
+
+            // Mica 输入状态
+            if (m_configurationSource != null)
+                m_configurationSource.IsInputActive = isActive;
         }
 
         private void HookMinWindowSize()
@@ -79,23 +102,14 @@ namespace OfflineInsiderEnrollUI
             {
                 var mmi = Marshal.PtrToStructure<MINMAXINFO>(lParam);
 
-                mmi.ptMinTrackSize.x = 620;
-                mmi.ptMinTrackSize.y = 800;
+                mmi.ptMinTrackSize.x = 580;
+                mmi.ptMinTrackSize.y = 700;
 
                 Marshal.StructureToPtr(mmi, lParam, fDeleteOld: false);
                 return IntPtr.Zero;
             }
 
             return CallWindowProc(_oldWndProc, hWnd, msg, wParam, lParam);
-        }
-
-        private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
-        {
-            if (m_configurationSource != null)
-            {
-                m_configurationSource.IsInputActive =
-                    args.WindowActivationState != WindowActivationState.Deactivated;
-            }
         }
 
         private delegate IntPtr WndProcDelegate(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);

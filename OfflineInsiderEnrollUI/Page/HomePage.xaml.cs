@@ -32,7 +32,6 @@ namespace OfflineInsiderEnrollUI
                 // 检查系统信息
                 var build = await InsiderEnrollService.GetWindowsBuild();
 
-                // 读取 UBR（修订号）
                 int ubr = (int)(Microsoft.Win32.Registry.GetValue(
                     @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion",
                     "UBR",
@@ -40,12 +39,14 @@ namespace OfflineInsiderEnrollUI
                 ) ?? 0);
 
                 // 显示更精确的版本号
-                SystemInfoBar.Message = $"10.0.{build}.{ubr}";
+                SystemInfoBarTitle.Text = "系统信息";
+                SystemInfoBarMessage.Text = $"Windows 10.0.{build}.{ubr}";
 
                 if (build < 17763)
                 {
-                    SystemInfoBar.Severity = InfoBarSeverity.Error;
-                    SystemInfoBar.Message = "不兼容: 此工具仅支持 Windows 10 v1809 (Build 17763) 及更高版本";
+                    SystemInfoBarTitle.Text = "错误";
+                    SystemInfoBarMessage.Text = "不兼容: 此工具仅支持 Windows 10 v1809 (Build 17763) 及更高版本";
+
                     EnrollButton.IsEnabled = false;
                     UnenrollButton.IsEnabled = false;
                     ChannelSelection.IsEnabled = false;
@@ -57,7 +58,6 @@ namespace OfflineInsiderEnrollUI
                 CurrentStatusText.Text = status.IsEnrolled ? $"已注册到 {status.ChannelName}" : "未注册";
                 FlightSigningText.Text = $"Flight Signing: {(status.FlightSigningEnabled ? "已启用" : "未启用")}";
 
-                // 根据已注册的频道默认选中
                 if (status.IsEnrolled)
                 {
                     currentEnrolledChannel = GetChannelIndexFromName(status.ChannelName);
@@ -66,14 +66,12 @@ namespace OfflineInsiderEnrollUI
                 else
                 {
                     currentEnrolledChannel = -1;
-                    // 如果未注册，按钮应该禁用直到用户选择频道
-                    EnrollButton.IsEnabled = false;
                 }
             }
             catch (Exception ex)
             {
-                SystemInfoBar.Severity = InfoBarSeverity.Error;
-                SystemInfoBar.Message = $"读取状态失败: {ex.Message}";
+                SystemInfoBarTitle.Text = "错误";
+                SystemInfoBarMessage.Text = $"读取状态失败: {ex.Message}";
             }
         }
 
@@ -176,7 +174,7 @@ namespace OfflineInsiderEnrollUI
                 //隐藏全屏遮罩
                 main.HideOverlay();
 
-                EnrollButton.IsEnabled = true;
+                EnrollButton.IsEnabled = false;
                 UnenrollButton.IsEnabled = true;
                 ChannelSelection.IsEnabled = true;
             }

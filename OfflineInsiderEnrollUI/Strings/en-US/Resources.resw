@@ -70,9 +70,6 @@
   </data>
 
   <!-- HomePage -->
-  <data name="PageTitle.Text" xml:space="preserve">
-    <value>Windows Insider Channel Enrollment</value>
-  </data>
   <data name="SystemInfoBar.Title" xml:space="preserve">
     <value>System Information:Windows</value>
   </data>
@@ -176,9 +173,13 @@
   <data name="AboutTitle.Text" xml:space="preserve">
     <value>About</value>
   </data>
-  <data name="AppTitle.Text" xml:space="preserve">
-    <value>Offline Insider Enroll UI</value>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Offline Insider Enroll</value>
   </data>
+<data name="AppTitle.Text">
+  <value>Offline Insider Enroll</value>
+</data>
+
   <data name="AppPublisher.Text" xml:space="preserve">
     <value>WinUI 3 Graphical Interface Version</value>
   </data>

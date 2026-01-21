@@ -12,23 +12,11 @@
     <WinUISDKReferences>false</WinUISDKReferences>
     <EnableMsixTooling>true</EnableMsixTooling>
     <Nullable>enable</Nullable>
-	<!-- ⭐ 关键：让 WinAppSDK 变成 Framework-dependent（最重要） -->
 	<WindowsAppSDKSelfContained>false</WindowsAppSDKSelfContained>
-	<!-- ⭐ 启用 Native AOT（减少 30~50%） -->
 	<PublishAot>true</PublishAot>
+	<PublishTrimmed>false</PublishTrimmed>
+    <StripSymbols>true</StripSymbols>
   </PropertyGroup>
-  <ItemGroup>
-    <Content Remove="Assets\Appicon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Dialog\ConfirmEnrollDialog.xaml" />
-    <None Remove="Dialog\ConfirmRebootDialog.xaml" />
-    <None Remove="Dialog\ConfirmUnenrollDialog.xaml" />
-    <None Remove="Dialog\ErrorDialog.xaml" />
-    <None Remove="Dialog\UnenrollSuccessDialog.xaml" />
-    <None Remove="FeedbackDialog.xaml" />
-    <None Remove="Page\HomePage.xaml" />
-  </ItemGroup>
 
   <ItemGroup>
     <Content Include="Assets\SplashScreen.scale-200.png">
@@ -72,17 +60,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Dialog\EnrollSuccessDialog.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Page\SettingsPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Page\HomePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
     <None Update="Assets\AppIcon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -92,24 +69,6 @@
     <None Update="Scripts\StopInsiderSuper.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Page Update="Dialog\ConfirmRebootDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Dialog\UnenrollSuccessDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Dialog\ConfirmUnenrollDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Dialog\ErrorDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Dialog\ConfirmEnrollDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="FeedbackDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
 
   <!--
@@ -127,15 +86,15 @@
     <PublishReadyToRun Condition="'$(Configuration)' != 'Debug'">True</PublishReadyToRun>
     <PublishTrimmed Condition="'$(Configuration)' == 'Debug'">False</PublishTrimmed>
     <PublishTrimmed Condition="'$(Configuration)' != 'Debug'">True</PublishTrimmed>
-    <PackageCertificateKeyFile>OfflineInsiderEnrollUI_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>Furry_Moxiao.pfx</PackageCertificateKeyFile>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Never</AppxBundle>
-    <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
 </Project>

@@ -70,11 +70,8 @@
   </data>
 
   <!-- HomePage -->
-  <data name="PageTitle.Text" xml:space="preserve">
-    <value>Windows Insider 频道注册</value>
-  </data>
   <data name="SystemInfoBar.Title" xml:space="preserve">
-    <value>系统版本:Windows</value>
+    <value>系统版本</value>
   </data>
   <data name="CurrentStatusTitle.Text" xml:space="preserve">
     <value>当前注册状态</value>
@@ -83,16 +80,16 @@
     <value>选择 Insider 频道</value>
   </data>
   <data name="ChannelCanary.Content" xml:space="preserve">
-    <value>Canary Channel (金丝雀频道)</value>
+    <value>Canary 频道 (系统不稳定)</value>
   </data>
   <data name="ChannelDev.Content" xml:space="preserve">
-    <value>Dev Channel (开发频道)</value>
+    <value>Dev 频道</value>
   </data>
   <data name="ChannelBeta.Content" xml:space="preserve">
-    <value>Beta Channel (Beta 频道)</value>
+    <value>Beta 频道</value>
   </data>
   <data name="ChannelRP.Content" xml:space="preserve">
-    <value>Release Preview Channel (发布预览频道)</value>
+    <value>Release Preview 频道</value>
   </data>
   <data name="EnrollButton.Content" xml:space="preserve">
     <value>注册到选定频道</value>
@@ -177,9 +174,12 @@
   <data name="AboutTitle.Text" xml:space="preserve">
     <value>关于</value>
   </data>
-  <data name="AppTitle.Text" xml:space="preserve">
-    <value>Offline Insider Enroll UI</value>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>离线加入预览通道</value>
   </data>
+<data name="AppTitle.Text">
+  <value>离线加入预览通道</value>
+</data>
   <data name="AppPublisher.Text" xml:space="preserve">
     <value>WinUI 3 图形界面版本</value>
   </data>

@@ -30,10 +30,9 @@
                Width="16"
                Height="16"
                Source="Assets/AppIcon.ico"/>
-                <TextBlock x:Name="AppTitle"
-                   Text="Offline Insider Enroll"
-                   VerticalAlignment="Center"
-                   Style="{StaticResource CaptionTextBlockStyle}"/>
+                <TextBlock x:Uid="AppTitle"
+           x:Name="AppTitle"
+           VerticalAlignment="Center"/>
             </StackPanel>
         </Grid>
 

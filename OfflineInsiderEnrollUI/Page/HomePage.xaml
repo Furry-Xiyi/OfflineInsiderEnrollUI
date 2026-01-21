@@ -5,62 +5,72 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
 
     <ScrollViewer>
-        <Grid Padding="40,20">
+        <Grid Padding="20,20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <StackPanel Padding="40,20" Spacing="20" HorizontalAlignment="Stretch">
+            <StackPanel Padding="20,20" HorizontalAlignment="Stretch">
 
-                <!-- 标题 -->
-                <TextBlock
-                    x:Uid="PageTitle"
-                    x:Name="PageTitleText"
-                    FontSize="32"
-                    FontWeight="Bold"
-                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
-
-                <!-- 系统信息卡片 -->
-                <muxc:InfoBar
-                    x:Uid="SystemInfoBar"
-                    x:Name="SystemInfoBar"
-                    IsOpen="True"
-                    IsClosable="False"
-                    Severity="Informational"/>
-
-                <!-- 当前状态卡片 -->
+                <!-- 状态卡片 -->
                 <Border
-                    x:Uid="CurrentStatusCard"
-                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                    BorderThickness="1"
-                    CornerRadius="8"
-                    Padding="20">
+    x:Uid="CurrentStatusCard"
+    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+    BorderThickness="1"
+    CornerRadius="8"
+    Padding="20">
 
-                    <StackPanel Spacing="12">
+                    <StackPanel Spacing="16">
 
-                        <TextBlock
-                            x:Uid="CurrentStatusTitle"
-                            x:Name="CurrentStatusTitleText"
-                            FontSize="20"
-                            FontWeight="SemiBold"
-                            Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
-
-                        <StackPanel Orientation="Horizontal" Spacing="8">
-                            <FontIcon Glyph="&#xECA7;" FontSize="16"/>
+                        <StackPanel x:Name="SystemInfoBar" Spacing="4">
                             <TextBlock
-                                x:Uid="CurrentStatusText"
-                                x:Name="CurrentStatusText"
-                                FontSize="16"
-                                Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+                x:Name="SystemInfoBarTitle"
+                FontSize="20"
+                FontWeight="SemiBold"
+                Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+
+                            <!-- 系统信息文本 -->
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <FontIcon
+        x:Name="SystemInfoBarIcon"
+        Glyph="&#xE770;"
+        FontFamily="Segoe Fluent Icons"
+        FontSize="16"/>
+
+                                <TextBlock
+        x:Name="SystemInfoBarMessage"
+        FontSize="16"
+        Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+                            </StackPanel>
                         </StackPanel>
 
+                        <!-- 当前状态标题 -->
                         <TextBlock
-                            x:Uid="FlightSigningText"
-                            x:Name="FlightSigningText"
-                            FontSize="14"
-                            Opacity="0.7"
-                            Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+            x:Uid="CurrentStatusTitle"
+            x:Name="CurrentStatusTitleText"
+            FontSize="20"
+            FontWeight="SemiBold"
+            Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+
+                        <!-- 状态文本 -->
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <FontIcon Glyph="&#xECA7;" FontFamily="Segoe Fluent Icons" FontSize="16"/>
+                            <TextBlock
+                x:Uid="CurrentStatusText"
+                x:Name="CurrentStatusText"
+                FontSize="16"
+                Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+                        </StackPanel>
+
+                        <!-- Flight Signing -->
+                        <TextBlock
+            x:Uid="FlightSigningText"
+            x:Name="FlightSigningText"
+            FontSize="14"
+            Opacity="0.7"
+            Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+
                     </StackPanel>
                 </Border>
 
@@ -88,25 +98,93 @@
                 <!-- 操作按钮 -->
                 <StackPanel Spacing="12" Margin="0,20,0,0">
 
-                    <Button
-                        x:Uid="EnrollButton"
-                        x:Name="EnrollButton"
-                        Style="{StaticResource AccentButtonStyle}"
-                        Click="EnrollButton_Click"
-                        IsEnabled="False"
-                        HorizontalAlignment="Stretch"/>
+                    <!-- 前两个按钮并排（等宽） -->
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                    <Button
-                        x:Uid="UnenrollButton"
-                        x:Name="UnenrollButton"
-                        Click="UnenrollButton_Click"
-                        HorizontalAlignment="Stretch"/>
+                        <!-- Enroll -->
+                        <Button
+    x:Uid="EnrollButton"
+    x:Name="EnrollButton"
+    Style="{StaticResource AccentButtonStyle}"
+    Click="EnrollButton_Click"
+    IsEnabled="False"
+    HorizontalAlignment="Stretch">
 
+                            <Button.ContentTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <FontIcon Glyph="&#xE710;"
+                          FontFamily="Segoe Fluent Icons"
+                          FontSize="16"
+                          Foreground="{ThemeResource TextFillColorPrimaryBrush}" Margin="0,1,0,0"/>
+
+                                        <!-- x:Uid 自动提供文本 -->
+                                        <TextBlock
+                    Text="{Binding}"
+                    FontSize="16"
+                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </Button.ContentTemplate>
+
+                        </Button>
+
+                        <!-- Unenroll -->
+                        <Button
+    x:Uid="UnenrollButton"
+    x:Name="UnenrollButton"
+    Grid.Column="1"
+    Click="UnenrollButton_Click"
+    HorizontalAlignment="Stretch">
+
+                            <Button.ContentTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <FontIcon Glyph="&#xF3B1;"
+                          FontFamily="Segoe Fluent Icons"
+                          FontSize="16"
+                          Foreground="{ThemeResource TextFillColorPrimaryBrush}" Margin="0,1,0,0"/>
+
+                                        <TextBlock
+                    Text="{Binding}"
+                    FontSize="16"
+                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </Button.ContentTemplate>
+
+                        </Button>
+                    </Grid>
+
+                    <!-- Refresh 单独一行 -->
                     <Button
-                        x:Uid="RefreshButton"
-                        x:Name="RefreshButton"
-                        Click="RefreshButton_Click"
-                        HorizontalAlignment="Stretch"/>
+    x:Uid="RefreshButton"
+    x:Name="RefreshButton"
+    Click="RefreshButton_Click"
+    HorizontalAlignment="Stretch">
+
+                        <Button.ContentTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <FontIcon Glyph="&#xE72C;"
+                          FontFamily="Segoe Fluent Icons"
+                          FontSize="16"
+                          Foreground="{ThemeResource TextFillColorPrimaryBrush}" Margin="0,1,0,0"/>
+
+                                    <TextBlock
+                    Text="{Binding}"
+                    FontSize="16"
+                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </Button.ContentTemplate>
+
+                    </Button>
+
                 </StackPanel>
 
                 <!-- 重启提示 -->
@@ -114,7 +192,8 @@
                     x:Uid="RebootInfoBar"
                     x:Name="RebootInfoBar"
                     IsOpen="False"
-                    Severity="Warning">
+                    Severity="Warning"
+                    Margin="0,20,0,0">
 
                     <muxc:InfoBar.ActionButton>
                         <Button
