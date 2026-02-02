@@ -35,13 +35,9 @@
 
 ## 📸 截图
 
-> 以下为示例截图，你可以替换为实际图片。
-
 | 主界面 | 设置页面 |
 |-------|----------|
-|<img width="3840" height="2159" alt="IMG_0943" src="https://github.com/user-attachments/assets/431922a0-f48c-46c3-a703-ad8b8d9de92d" />
-|<img width="3840" height="2160" alt="IMG_0946" src="https://github.com/user-attachments/assets/db8c3490-df84-438d-928d-8adfa4d29c0c" />
-|
+|<img width="3840" height="2159" alt="IMG_0943" src="https://github.com/user-attachments/assets/431922a0-f48c-46c3-a703-ad8b8d9de92d" />|<img width="3840" height="2160" alt="IMG_0946" src="https://github.com/user-attachments/assets/db8c3490-df84-438d-928d-8adfa4d29c0c" />
 
 ---
 
