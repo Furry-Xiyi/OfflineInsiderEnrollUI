@@ -5,6 +5,10 @@
 本项目基于 [OfflineInsiderEnroll](https://github.com/abbodi1406/offlineinsiderenroll) 实现，并提供更友好的可视化界面、自动化操作与系统信息展示。
 
 ---
+## 📥 安装方法：
+1. 右键安装包-属性-数字签名-查看证书-安装-安装到本地计算机-放入下列存储-浏览-受信任的证书颁发机构-完成-双击安装包安装
+2. [微软商店](https://apps.microsoft.com/detail/9PD1QWVK1XPF?hl=zh-cn&gl=US&ocid=pdpshare)
+---
 
 ## ✨ 功能特性
 
