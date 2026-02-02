@@ -39,7 +39,9 @@
 
 | 主界面 | 设置页面 |
 |-------|----------|
-|<img width="1920" height="1080" alt="屏幕截图 2026-01-21 035049" src="https://github.com/user-attachments/assets/da51816f-8a2b-473f-aeca-2e650b36bcbd" />|<img width="1920" height="1080" alt="屏幕截图 2026-01-21 035116" src="https://github.com/user-attachments/assets/7b8fafde-01b8-4030-b496-1e2e09001a91" />|
+|<img width="3840" height="2159" alt="IMG_0943" src="https://github.com/user-attachments/assets/431922a0-f48c-46c3-a703-ad8b8d9de92d" />
+|<img width="3840" height="2160" alt="IMG_0946" src="https://github.com/user-attachments/assets/db8c3490-df84-438d-928d-8adfa4d29c0c" />
+|
 
 ---
 
@@ -50,11 +52,10 @@
 👉 **[Microsoft Store（推荐）](https://apps.microsoft.com/)**  
 👉 **[GitHub Releases](https://github.com/你的仓库/releases)**
 
-MSIX 包支持：
+包需要的权限：
 
-- 自动更新  
-- 干净卸载  
-- x64 / ARM64 架构  
+- 使用全部系统资源  
+- IoT系统管理 
 
 ---
 
